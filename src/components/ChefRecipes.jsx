@@ -36,7 +36,7 @@ const ChefRecipes = () => {
       </div>
       <h1 className="text-6xl font-medium mt-6 mb-5">Chef's Recipe</h1>
       {
-        recipesData.map(data => <li key={data.recipe_id}><Link>{data.recipe_name}</Link></li>)
+        recipesData.map(data => <li key={data.recipe_id}><Link to='/recipe'>{data.recipe_name}</Link></li>)
       }
     </div>
   );
