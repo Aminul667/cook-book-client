@@ -11,12 +11,12 @@ const Chef = ({ chef }) => {
           <img src={chef_picture} alt="" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{chef_name}</h2>
-          <p>{experience}</p>
-          <p>{recipes}</p>
-          <p>{likes}</p>
+          <h2 className="text-2xl font-semibold">{chef_name}</h2>
+          <p className="text-lg"><span className="font-medium">Experience:</span> {experience}</p>
+          <p className="text-lg"><span className="font-medium">Recipes:</span> {recipes}</p>
+          <p className="text-lg"><span className="font-medium">Likes:</span> {likes}</p>
           <div className="card-actions justify-center">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn bg-lime-500 border-none">View Recipes</button>
           </div>
         </div>
       </div>
