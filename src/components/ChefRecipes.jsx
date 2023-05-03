@@ -5,9 +5,6 @@ const ChefRecipes = () => {
   const recipesData = useLoaderData();
   const { state } = useLocation();
   const { chef_picture, chef_name, description, experience, likes, recipes } = state;
-  const {recipe_name} = recipesData;
-
-  console.log(recipesData);
 
   return (
     <div className="lg:mx-9">
@@ -36,7 +33,9 @@ const ChefRecipes = () => {
       </div>
       <h1 className="text-6xl font-medium mt-6 mb-5">Chef's Recipe</h1>
       {
-        recipesData.map(data => <li key={data.recipe_id}><Link to='/recipe'>{data.recipe_name}</Link></li>)
+        recipesData.map(data => <li 
+            key={data.recipe_id}
+          ><Link to={`/recipe/${data.recipe_id}`}>{data.recipe_name}</Link></li>)
       }
     </div>
   );
