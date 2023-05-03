@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+
   return (
     <div className="lg:mx-9 my-6">
       <div className="navbar py-5 bg-lime-200">
@@ -31,10 +35,10 @@ const Header = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to='blog'>Blog</Link>
+                <Link to="blog">Blog</Link>
               </li>
               <li>
-                <Link to='login'>Login</Link>
+                <Link to="login">Login</Link>
               </li>
             </ul>
           </div>
@@ -75,25 +79,33 @@ const Header = () => {
                 Blog
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="login"
-                style={({ isActive }) =>
-                  isActive
-                    ? {
-                        color: "#fff",
-                        background: "#7600dc",
-                      }
-                    : {}
-                }
-              >
-                Login
-              </NavLink>
-            </li>
+            {/*  */}
+            {!user ? (
+              <li>
+                <NavLink
+                  to="login"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          color: "#fff",
+                          background: "#7600dc",
+                        }
+                      : {}
+                  }
+                >
+                  Login
+                </NavLink>
+              </li>
+            ) : (
+              <li>
+                <button>Logout</button>
+              </li>
+            )}
+            {/*  */}
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Profile</a>
+          {user && <a className="btn">{user.displayName}</a>}
         </div>
       </div>
     </div>

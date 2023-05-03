@@ -1,37 +1,85 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Registration = () => {
+  const { createUser } = useContext(AuthContext);
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
-      <h2>Register</h2>
-      <div class="relative flex flex-col items-center h-screen overflow-hidden">
-        <div class="w-full p-6 bg-white border-t-4 border-gray-600 rounded-md shadow-md border-top lg:max-w-lg">
-          <h1 class="text-3xl font-semibold text-center text-gray-700">
+      <div className="relative flex flex-col items-center h-screen overflow-hidden">
+        <div className="w-full p-6 bg-white border-t-4 border-gray-600 rounded-md shadow-md border-top lg:max-w-lg">
+          <h1 className="text-3xl font-semibold text-center text-gray-700">
             Register
           </h1>
-          <form class="space-y-4">
+          <form className="space-y-4" onSubmit={handleRegister}>
             <div>
-              <label class="label">
-                <span class="text-base label-text">Email</span>
+              <label className="label">
+                <span className="text-base label-text">Name</span>
               </label>
               <input
                 type="text"
-                placeholder="Email Address"
-                class="w-full input input-bordered"
+                name="name"
+                placeholder="Enter Your Name"
+                required
+                className="w-full input input-bordered"
               />
             </div>
             <div>
-              <label class="label">
-                <span class="text-base label-text">Password</span>
+              <label className="label">
+                <span className="text-base label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+                className="w-full input input-bordered"
+              />
+            </div>
+            <div>
+              <label className="label">
+                <span className="text-base label-text">Photo Url</span>
+              </label>
+              <input
+                type="text"
+                name="photo"
+                placeholder="Photo Url"
+                required
+                className="w-full input input-bordered"
+              />
+            </div>
+            <div>
+              <label className="label">
+                <span className="text-base label-text">Password</span>
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="Enter Password"
-                class="w-full input input-bordered"
+                required
+                className="w-full input input-bordered"
               />
             </div>
             <div>
-              <button class="btn btn-block">Login</button>
+              <button className="btn btn-block">Register</button>
             </div>
           </form>
         </div>
