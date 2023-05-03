@@ -3,8 +3,16 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   console.log(user);
+
+  const handleLogout = () => {
+    logOut()
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="lg:mx-9 my-6">
@@ -98,7 +106,7 @@ const Header = () => {
               </li>
             ) : (
               <li>
-                <button>Logout</button>
+                <button onClick={handleLogout}>Logout</button>
               </li>
             )}
             {/*  */}

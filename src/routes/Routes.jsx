@@ -6,6 +6,7 @@ import Recipe from "../components/Recipe";
 import Login from "../components/Login";
 import Registration from "../components/Registration";
 import Blog from "../components/Blog";
+import PrivateRoute from "../providers/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'recipe/:id',
-                element: <Recipe></Recipe>,
+                element: <PrivateRoute><Recipe></Recipe></PrivateRoute>,
                 loader: ({params}) => fetch(`https://b710-chef-recipe-server.vercel.app/chefs/recipe/${params.id}`)
             },
             {
