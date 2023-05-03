@@ -12,17 +12,17 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/chefs')
+                loader: () => fetch('https://b710-chef-recipe-server.vercel.app/chefs')
             },
             {
                 path: ':id',
                 element: <ChefRecipes></ChefRecipes>,
-                loader: ({params}) => fetch(`http://localhost:5000/chefs/${params.id}`)
+                loader: ({params}) => fetch(`https://b710-chef-recipe-server.vercel.app/chefs/${params.id}`)
             },
             {
                 path: 'recipe/:id',
                 element: <Recipe></Recipe>,
-                loader: ({params}) => fetch(`http://localhost:5000/chefs/recipe/${params.id}`)
+                loader: ({params}) => fetch(`https://b710-chef-recipe-server.vercel.app/chefs/recipe/${params.id}`)
             }
         ]
     }
