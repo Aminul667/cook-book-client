@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -28,16 +28,13 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link>Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <Link>Blog</Link>
+                <Link to='blog'>Blog</Link>
               </li>
               <li>
-                <Link>Login</Link>
-              </li>
-              <li>
-                <Link>Logout</Link>
+                <Link to='login'>Login</Link>
               </li>
             </ul>
           </div>
@@ -49,16 +46,49 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link>Home</Link>
+              <NavLink
+                to="/"
+                style={({ isActive }) =>
+                  isActive
+                    ? {
+                        color: "#fff",
+                        background: "#7600dc",
+                      }
+                    : {}
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link>Blog</Link>
+              <NavLink
+                to="blog"
+                style={({ isActive }) =>
+                  isActive
+                    ? {
+                        color: "#fff",
+                        background: "#7600dc",
+                      }
+                    : {}
+                }
+              >
+                Blog
+              </NavLink>
             </li>
             <li>
-              <Link>Login</Link>
-            </li>
-            <li>
-              <Link>Logout</Link>
+              <NavLink
+                to="login"
+                style={({ isActive }) =>
+                  isActive
+                    ? {
+                        color: "#fff",
+                        background: "#7600dc",
+                      }
+                    : {}
+                }
+              >
+                Login
+              </NavLink>
             </li>
           </ul>
         </div>
