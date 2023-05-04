@@ -7,6 +7,8 @@ import "@smastrom/react-rating/style.css";
 const Recipe = () => {
   const detailsRecipe = useLoaderData();
   const { photo, name, ingredients, method, rating } = detailsRecipe;
+
+  // changing disable state
   const [isDisabled, setIsDisabled] = useState(false);
 
   const notify = () => {
@@ -14,7 +16,6 @@ const Recipe = () => {
     setIsDisabled(true);
   };
 
-  console.log(detailsRecipe);
   return (
     <div className="lg:mx-9">
       <h2 className="text-5xl font-medium text-lime-500 mb-4 font-montez">

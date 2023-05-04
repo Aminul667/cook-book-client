@@ -23,7 +23,6 @@ const Registration = () => {
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
-        console.log(createdUser);
         updateUserData(createdUser, name, photo);
         navigate('/', { replace: true });
       })

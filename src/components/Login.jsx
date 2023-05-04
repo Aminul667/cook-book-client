@@ -3,8 +3,13 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
+  // collecting authentication information from auth context
   const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+
+  // error state
   const [error, setError] = useState('');
+
+  // navigation for the location
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -15,14 +20,10 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
-
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log("loggedUser", loggedUser);
         navigate(from, { replace: true });
-        // navigate('/', { replace: true });
       })
       .catch((error) => {
         setError(error.message);
@@ -33,7 +34,6 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -45,7 +45,6 @@ const Login = () => {
     signInWithGithub()
     .then(result => {
       const loggedUser = result.user;
-      console.log(loggedUser);
       navigate(from, { replace: true });
     })
     .catch(error => {

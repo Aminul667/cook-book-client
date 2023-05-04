@@ -1,13 +1,8 @@
 import React from "react";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const FoodBooks = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
 
   return (
     <div className="lg:mx-9 mt-12">
@@ -25,7 +20,7 @@ const FoodBooks = () => {
           <div className="card-body items-center text-center">
             <h2 className="card-title">My Bangladeshi Kitchen</h2>
             <p>Saira Hamilton</p>
-            <p>Rating 5</p>
+            <Rating style={{ maxWidth: 150 }} value={5} readOnly />
             <div className="card-actions">
               <button className="btn bg-lime-500 hover:bg-lime-700 border-none">Buy Now</button>
             </div>
@@ -39,9 +34,9 @@ const FoodBooks = () => {
             />
           </figure>
           <div className="card-body items-center text-center">
-            <h2 className="card-title">My Bangladeshi Kitchen</h2>
-            <p>Saira Hamilton</p>
-            <p>Rating 5</p>
+            <h2 className="card-title">Curry Cook Book</h2>
+            <p>Valeriya Ray</p>
+            <Rating style={{ maxWidth: 150 }} value={5} readOnly />
             <div className="card-actions">
               <button className="btn bg-lime-500 hover:bg-lime-700 border-none">Buy Now</button>
             </div>
@@ -55,9 +50,9 @@ const FoodBooks = () => {
             />
           </figure>
           <div className="card-body items-center text-center">
-            <h2 className="card-title">My Bangladeshi Kitchen</h2>
-            <p>Saira Hamilton</p>
-            <p>Rating 5</p>
+            <h2 className="card-title">Love of Biryani</h2>
+            <p>Varman Matur</p>
+            <Rating style={{ maxWidth: 150 }} value={5} readOnly />
             <div className="card-actions">
               <button className="btn bg-lime-500 hover:bg-lime-700 border-none">Buy Now</button>
             </div>
