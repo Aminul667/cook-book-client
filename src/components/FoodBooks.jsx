@@ -11,8 +11,10 @@ const FoodBooks = () => {
 
   return (
     <div className="lg:mx-9">
-    <h2 className="text-5xl font-semibold text-lime-500 mb-4">Buy Our Latest Books</h2>
-      <div className="flex justify-between">
+      <h2 className="text-5xl font-semibold text-lime-500 mb-4">
+        Buy Our Latest Books
+      </h2>
+      <div className="flex justify-between items-center lg:flex-row sm:flex-col">
         <div className="card w-96 bg-base-100 shadow-xl">
           <figure className="px-6 pt-6">
             <img
