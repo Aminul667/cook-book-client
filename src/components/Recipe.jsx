@@ -1,5 +1,8 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import { Rating } from "@smastrom/react-rating";
+
+import "@smastrom/react-rating/style.css";
 
 const Recipe = () => {
   const detailsRecipe = useLoaderData();
@@ -17,8 +20,7 @@ const Recipe = () => {
         <p className="mb-6">{ingredients}</p>
         <h2 className="text-2xl font-medium mb-2">Method</h2>
         <p className="mb-6">{method}</p>
-        <h2>Rating</h2>
-        <p>{rating}</p>
+        <Rating style={{ maxWidth: 150 }} value={rating} readOnly />
       </div>
     </div>
   );
