@@ -10,8 +10,8 @@ const FoodBooks = () => {
   };
 
   return (
-    <div className="lg:mx-9">
-      <h2 className="text-5xl font-semibold text-lime-500 mb-4">
+    <div className="lg:mx-9 mt-12">
+      <h2 className="text-5xl font-medium text-lime-500 mb-4 font-montez">
         Buy Our Latest Books
       </h2>
       <div className="flex justify-between items-center lg:flex-row sm:flex-col">
@@ -27,7 +27,7 @@ const FoodBooks = () => {
             <p>Saira Hamilton</p>
             <p>Rating 5</p>
             <div className="card-actions">
-              <button className="btn btn-primary">Buy Now</button>
+              <button className="btn bg-lime-500 hover:bg-lime-700 border-none">Buy Now</button>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@ const FoodBooks = () => {
             <p>Saira Hamilton</p>
             <p>Rating 5</p>
             <div className="card-actions">
-              <button className="btn btn-primary">Buy Now</button>
+              <button className="btn bg-lime-500 hover:bg-lime-700 border-none">Buy Now</button>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@ const FoodBooks = () => {
             <p>Saira Hamilton</p>
             <p>Rating 5</p>
             <div className="card-actions">
-              <button className="btn btn-primary">Buy Now</button>
+              <button className="btn bg-lime-500 hover:bg-lime-700 border-none">Buy Now</button>
             </div>
           </div>
         </div>

@@ -3,8 +3,8 @@ import food from "../assets/images/good-food.jpg"
 
 const GoodFood = () => {
   return (
-    <div className="lg:mx-9 mt-9">
-      <h2 className="text-5xl font-semibold text-lime-500 mb-4">Better Health with Healthy Food</h2>
+    <div className="lg:mx-9 mt-14">
+      <h2 className="text-5xl font-medium text-lime-500 mb-4 font-montez">Better Health with Healthy Food</h2>
       <div className="flex justify-between items-center gap-6 sm:flex-col lg:flex-row">
         <p className="lg:w-3/5 text-lg leading-8 text-justify">
           Good food and health are closely intertwined. Eating a well-balanced

@@ -1,4 +1,5 @@
 import React from "react";
+import { AiFillLike } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const Chef = ({ chef }) => {
@@ -12,12 +13,21 @@ const Chef = ({ chef }) => {
         </figure>
         <div className="card-body">
           <h2 className="text-2xl font-semibold">{chef_name}</h2>
-          <p className="text-lg"><span className="font-medium">Experience:</span> {experience}</p>
-          <p className="text-lg"><span className="font-medium">Recipes:</span> {recipes}</p>
-          <p className="text-lg"><span className="font-medium">Likes:</span> {likes}</p>
+          <p className="text-lg">
+            <span className="font-medium">Experience:</span> {experience}
+          </p>
+          <p className="text-lg">
+            <span className="font-medium">Recipes:</span> {recipes}
+          </p>
+          <div className="flex gap-2 items-center text-xl">
+            <AiFillLike></AiFillLike>
+            {likes}
+          </div>
           <div className="card-actions justify-center">
-            <button className="btn bg-lime-500 border-none">
-                <Link to={`/${chef_id}`} state={chef}>View Recipes</Link>
+            <button className="btn bg-lime-500 border-none hover:bg-lime-700">
+              <Link to={`/${chef_id}`} state={chef}>
+                View Recipes
+              </Link>
             </button>
           </div>
         </div>
