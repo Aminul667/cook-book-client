@@ -1,4 +1,5 @@
 import React from "react";
+import food from "../assets/images/good-food.jpg"
 
 const GoodFood = () => {
   return (
@@ -19,7 +20,7 @@ const GoodFood = () => {
           for promoting good health and overall wellbeing.
         </p>
         <div className="lg:w-2/5">
-            <img src="../../public/images/good-food.jpg" alt="" />
+            <img src={food} alt="" />
         </div>
       </div>
     </div>
