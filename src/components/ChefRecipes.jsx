@@ -4,7 +4,8 @@ import { Link, useLoaderData, useLocation } from "react-router-dom";
 const ChefRecipes = () => {
   const recipesData = useLoaderData();
   const { state } = useLocation();
-  const { chef_picture, chef_name, description, experience, likes, recipes } = state;
+  const { chef_picture, chef_name, description, experience, likes, recipes } =
+    state;
 
   return (
     <div className="lg:mx-9">
@@ -31,34 +32,35 @@ const ChefRecipes = () => {
           </p>
         </div>
       </div>
-      <h1 className="text-6xl font-medium mt-6 mb-5">Chef's Recipe</h1>
-      {
-        recipesData.map(data => <li 
+      <h1 className="text-6xl font-medium mt-6 mb-10">Chef's Recipe</h1>
+      <ul className="flex flex-col w-1/2 mx-auto">
+        {recipesData.map((data) => (
+          <li
             key={data.recipe_id}
-          ><Link to={`/recipe/${data.recipe_id}`}>{data.recipe_name}</Link></li>)
-      }
+            className="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+          >
+            <div className="flex justify-between w-full">
+              {data.recipe_name}
+              <div>
+                <span className="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-blue-500 text-white mr-5">
+                  <Link to={`/recipe/${data.recipe_id}`}>Details</Link>
+                </span>
+                <span className="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-blue-500 text-white">
+                  Favourite
+                </span>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
 export default ChefRecipes;
 
-{
-  /* <div className="lg:mx-9 mt-9">
-      <h2 className="text-5xl font-semibold text-lime-500 mb-4">
-        Better Health with Healthy Food
-      </h2>
-      <div className="flex justify-between items-center gap-6 sm:flex-col lg:flex-row">
-        <div className="lg:w-2/5">
-          <img src={chef_picture} alt="" />
-        </div>
-        <div className="lg:w-3/5 text-lg leading-8 text-justify">
-          <h1>{chef_name}</h1>
-          <p>{description}</p>
-          <p>{experience}</p>
-          <p>{recipes}</p>
-          <p>{likes}</p>
-        </div>
-      </div>
-    </div> */
-}
+// {
+//   recipesData.map(data => <li
+//       key={data.recipe_id}
+//     ><Link to={`/recipe/${data.recipe_id}`}>{data.recipe_name}</Link></li>)
+// }
