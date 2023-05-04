@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -24,7 +25,19 @@ const Login = () => {
         // navigate('/', { replace: true });
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setError(error.message);
       });
   };
 
@@ -69,12 +82,13 @@ const Login = () => {
                 Register
               </Link>
             </p>
+            <p className="text-red-500">{error}</p>
             <div>
               <button className="btn btn-block">Login</button>
             </div>
           </form>
           <div className="my-4">
-            <button className="btn btn-block">Google Sign-in</button>
+            <button onClick={handleGoogleSignIn} className="btn btn-block">Google Sign-in</button>
           </div>
           <div>
             <button className="btn btn-block">GitHub Sign-in</button>

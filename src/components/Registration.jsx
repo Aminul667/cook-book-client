@@ -1,8 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserData } = useContext(AuthContext);
+  const navigate = useNavigate()
+  const [error, setError] = useState('');
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -12,10 +15,17 @@ const Registration = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    if(password.length < 6){
+      setError('Password can not be less than six character');
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
         console.log(createdUser);
+        updateUserData(createdUser, name, photo);
+        navigate('/', { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -78,6 +88,7 @@ const Registration = () => {
                 className="w-full input input-bordered"
               />
             </div>
+            <p className='text-red-500'>{error}</p>
             <div>
               <button className="btn btn-block">Register</button>
             </div>

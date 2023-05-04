@@ -113,7 +113,13 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {user && <a className="btn">{user.displayName}</a>}
+          {user && (
+            <div className="avatar">
+              <div className="w-14 rounded-full">
+                <img src={user.photoURL} title={user.displayName}/>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
