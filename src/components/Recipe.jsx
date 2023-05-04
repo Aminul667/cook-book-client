@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
-
+import { ToastContainer, toast } from "react-toastify";
 import "@smastrom/react-rating/style.css";
 
 const Recipe = () => {
   const detailsRecipe = useLoaderData();
   const { photo, name, ingredients, method, rating } = detailsRecipe;
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  const notify = () => {
+    toast("Added to the Favorite!!");
+    setIsDisabled(true);
+  };
 
   console.log(detailsRecipe);
   return (
@@ -21,6 +27,16 @@ const Recipe = () => {
         <h2 className="text-2xl font-medium mb-2">Method</h2>
         <p className="mb-6">{method}</p>
         <Rating style={{ maxWidth: 150 }} value={rating} readOnly />
+        <div className="mt-6">
+          <button
+            onClick={notify}
+            className="btn bg-lime-500 hover:bg-lime-700 border-none"
+            disabled={isDisabled}
+          >
+            Add to Favourite
+          </button>
+          <ToastContainer />
+        </div>
       </div>
     </div>
   );

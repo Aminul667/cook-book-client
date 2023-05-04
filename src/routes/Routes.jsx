@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../components/layout/Main";
-import Home from "../components/Home";
+// import Home from "../components/Home";
 import ChefRecipes from "../components/ChefRecipes";
 import Recipe from "../components/Recipe";
 import Login from "../components/Login";
@@ -8,6 +8,9 @@ import Registration from "../components/Registration";
 import Blog from "../components/Blog";
 import PrivateRoute from "../providers/PrivateRoute";
 import ErrorPage from "../components/ErrorPage";
+import { Suspense, lazy } from "react";
+
+const Home = lazy(() => import('../components/Home'));
 
 const router = createBrowserRouter([
     {
@@ -17,7 +20,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>,
+                element: <Suspense fallback='Loading...'><Home></Home></Suspense>,
                 loader: () => fetch('https://b710-chef-recipe-server.vercel.app/chefs')
             },
             {

@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ChefRecipes = () => {
   const recipesData = useLoaderData();
   const { state } = useLocation();
-  const [disabled, setDisabled] = useState(false);
 
   const { chef_picture, chef_name, description, experience, likes, recipes } =
     state;
-
-  const notify = () => {
-    toast("Added to the Favorite!!");
-    setDisabled(true);
-  };
 
   return (
     <div className="lg:mx-9">
@@ -55,12 +48,6 @@ const ChefRecipes = () => {
               <div>
                 <span className="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-lime-500 text-white mr-5">
                   <Link to={`/recipe/${data.recipe_id}`}>Details</Link>
-                </span>
-                <span className="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-lime-500 text-white">
-                  <button onClick={notify} disabled={disabled}>
-                    Favourite
-                  </button>
-                  <ToastContainer />
                 </span>
               </div>
             </div>
