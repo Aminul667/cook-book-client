@@ -25,7 +25,7 @@ const Chef = ({ chef }) => {
           </div>
           <div className="card-actions justify-center">
             <button className="btn bg-lime-500 border-none hover:bg-lime-700">
-              <Link to={`/${chef_id}`} state={chef}>
+              <Link to={`/${chef_id}`}>
                 View Recipes
               </Link>
             </button>

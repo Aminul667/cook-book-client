@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import { MoonLoader } from "react-spinners";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
@@ -8,8 +9,8 @@ const PrivateRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <div className="radial-progress text-primary" style={{ "--value": 70 }}>
-        70%
+      <div className="flex justify-center">
+        <MoonLoader color="#36d7b7" />
       </div>
     );
   }

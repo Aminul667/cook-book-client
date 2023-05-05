@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 import { ToastContainer, toast } from "react-toastify";
 import "@smastrom/react-rating/style.css";
+import { FaArrowLeft } from "react-icons/fa";
 
 const Recipe = () => {
   const detailsRecipe = useLoaderData();
+  const navigate = useNavigate();
+
   const { photo, name, ingredients, method, rating } = detailsRecipe;
 
   // changing disable state
@@ -15,6 +18,10 @@ const Recipe = () => {
     toast("Added to the Favorite!!");
     setIsDisabled(true);
   };
+
+  const handleNavigation = () =>{
+    navigate(-1, { replace: true });
+  }
 
   return (
     <div className="lg:mx-9">
@@ -38,6 +45,7 @@ const Recipe = () => {
           </button>
           <ToastContainer />
         </div>
+        <button onClick={handleNavigation} className="btn bg-white text-black p-0 border-none hover:bg-white"><FaArrowLeft></FaArrowLeft> Back to the recipes</button>
       </div>
     </div>
   );

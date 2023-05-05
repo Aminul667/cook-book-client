@@ -9,6 +9,7 @@ import Blog from "../components/Blog";
 import PrivateRoute from "../providers/PrivateRoute";
 import ErrorPage from "../components/ErrorPage";
 import { Suspense, lazy } from "react";
+import { FadeLoader } from "react-spinners";
 
 const Home = lazy(() => import('../components/Home'));
 
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Suspense fallback='Loading...'><Home></Home></Suspense>,
+                element: <Suspense fallback={<FadeLoader color="#36d7b7"/>}><Home></Home></Suspense>,
                 loader: () => fetch('https://b710-chef-recipe-server.vercel.app/chefs')
             },
             {

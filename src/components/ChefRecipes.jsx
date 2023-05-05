@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillLike } from "react-icons/ai";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useParams } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const ChefRecipes = () => {
   const recipesData = useLoaderData();
-  const { state } = useLocation();
+  const { id } = useParams();
+  const [chef, setChef] = useState([]);
+
+  useEffect(() => {
+    fetch("https://b710-chef-recipe-server.vercel.app/chefs")
+      .then((res) => res.json())
+      .then((data) => {
+        const findChef = data.find((chef) => chef.chef_id === parseInt(id));
+        setChef(findChef);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   const { chef_picture, chef_name, description, experience, likes, recipes } =
-    state;
+    chef;
 
   return (
     <div className="lg:mx-9">
@@ -36,7 +47,9 @@ const ChefRecipes = () => {
           </div>
         </div>
       </div>
-      <h1 className="text-5xl font-medium text-lime-500 mb-4 font-montez">Chef's Recipe</h1>
+      <h1 className="text-5xl font-medium text-lime-500 mb-4 font-montez">
+        Chef's Recipe
+      </h1>
       <ul className="flex flex-col w-1/2 mx-auto mb-12">
         {recipesData.map((data) => (
           <li
